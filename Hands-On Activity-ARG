@@ -1,0 +1,46 @@
+package handsonactivityarg;
+
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Thread is running.");
+    }
+}
+
+public class JavaConcurrency01 {
+    public static void main(String[] args) {
+        // Creating a new thread
+        MyThread myThread = new MyThread();
+
+        // Using the start method
+        myThread.start();
+        System.out.println("Thread started.");
+
+        // Using the setName and getName methods
+        myThread.setName("MyThread");
+        System.out.println("Thread name: " + myThread.getName());
+
+        // Using the setPriority method
+        myThread.setPriority(Thread.MAX_PRIORITY);
+        System.out.println("Thread priority: " + myThread.getPriority());
+
+        // Using the isAlive method
+        System.out.println("Thread is alive? " + myThread.isAlive());
+
+        // Using the join method
+        try {
+            myThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Using the sleep method
+        try {
+            System.out.println("Thread sleeping.");
+            Thread.sleep(2000);
+            System.out.println("Thread awake.");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
